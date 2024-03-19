@@ -1,10 +1,9 @@
 import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
+import 'package:logistic/widgets/header_card.dart';
 
-import '../widgets/header_card.dart';
-
-class AddUserScreen extends StatelessWidget {
-  const AddUserScreen({super.key});
+class EditUserDetails extends StatelessWidget {
+  const EditUserDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,20 +37,20 @@ class AddUserScreen extends StatelessWidget {
                   width: 50.w,
                 ),
                 Text(
-                  'Add New User',
+                  'Edit User Details',
                   style: TextStyle(
                       fontSize: 24.sp,
                       fontWeight: FontWeight.bold,
                       color: LogisticColors.black),
                 ),
-                const SizedBox.shrink()
+                const SizedBox.shrink(),
               ],
             ),
             SizedBox(
               height: 4.h,
             ),
             Text(
-              'Enter Details to Create a New User',
+              'Update user information',
               style: TextStyle(fontSize: 16.sp, color: LogisticColors.black),
             ),
             SizedBox(
@@ -391,7 +390,7 @@ class AddUserScreen extends StatelessWidget {
             )
           ],
         ),
-      ),
+      )
     ]));
   }
 }

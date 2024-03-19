@@ -1,3 +1,4 @@
+import 'package:logistic/screens/view_edit_order_details.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/utils/icons.dart';
 
@@ -142,7 +143,7 @@ class VechileInfoCard extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(4),
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(32)),
                         color: LogisticColors.yellow),
@@ -157,7 +158,16 @@ class VechileInfoCard extends StatelessWidget {
                         SizedBox(
                           width: 10.w,
                         ),
-                        const Icon(Icons.border_color)
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) =>
+                                        const ViewEditOrderDetails()));
+                          },
+                          child: const Icon(Icons.border_color),
+                        ),
                       ],
                     ),
                   )

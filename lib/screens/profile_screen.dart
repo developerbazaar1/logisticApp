@@ -1,3 +1,7 @@
+import 'package:logistic/screens/change_password.dart';
+import 'package:logistic/screens/edit_profile.dart';
+import 'package:logistic/screens/privacy_policy.dart';
+import 'package:logistic/screens/terms_conditions.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/utils/icons.dart';
 import 'package:logistic/widgets/header_card.dart';
@@ -94,12 +98,22 @@ class ProfileScreen extends StatelessWidget {
                 ProfileTile(
                   iconName: LogisticIcons.editProfile,
                   title: 'Edit Profile',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => const EditProfile()));
+                  },
                 ),
                 ProfileTile(
                   iconName: LogisticIcons.changePassword,
                   title: 'Change password',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => const ChangePassword()));
+                  },
                 ),
                 ProfileTile(
                   iconName: LogisticIcons.notification,
@@ -114,12 +128,22 @@ class ProfileScreen extends StatelessWidget {
                 ProfileTile(
                   iconName: LogisticIcons.privacyPolicy,
                   title: 'Privacy Policy',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => const PrivacyPolicy()));
+                  },
                 ),
                 ProfileTile(
                   iconName: LogisticIcons.termsAndCondition,
                   title: 'Terms & Condition',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => const TermsCondition()));
+                  },
                 ),
                 ProfileTile(
                   iconName: LogisticIcons.logOut,

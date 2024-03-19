@@ -1,3 +1,4 @@
+import 'package:logistic/screens/edit_user_details.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/header_card.dart';
 
@@ -108,9 +109,18 @@ class ViewUserScreen extends StatelessWidget {
                                 color: Colors.red,
                               ),
                               const Spacer(),
-                              const Icon(
-                                Icons.border_color,
-                                color: LogisticColors.yellow,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) =>
+                                              const EditUserDetails()));
+                                },
+                                child: const Icon(
+                                  Icons.border_color,
+                                  color: LogisticColors.yellow,
+                                ),
                               ),
                               SizedBox(
                                 height: 6.h,

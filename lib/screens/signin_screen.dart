@@ -19,7 +19,7 @@ class _SignInScreenState extends State<SignInScreen> {
         children: [
           Image.asset(
             LogisticImages.darkSplash,
-            height: 450.h,
+            height: 480.h,
             fit: BoxFit.fill,
             width: double.maxFinite,
           ),
@@ -88,12 +88,110 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 25.h,
                       ),
                       Container(
+                        padding: const EdgeInsets.all(16.0),
                         height: 154.h,
                         margin: EdgeInsets.symmetric(horizontal: 18.sp),
                         width: double.maxFinite,
                         decoration: BoxDecoration(
-                            color: LogisticColors.primary,
-                            borderRadius: BorderRadius.circular(32)),
+                          color: LogisticColors.primary,
+                          borderRadius: BorderRadius.circular(32),
+                          image: const DecorationImage(
+                              image: AssetImage(
+                                  'lib/assets/images/background.png')),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Secure Sign In – Enter Your Details",
+                              // style: TextStyle(
+                              //   fontSize: 17.sp,
+                              //   color: LogisticColors.black,
+                              //   fontWeight: FontWeight.bold,
+                              // ),
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                        // width: 15,
+                                        // height: 15,
+                                        // color: Colors.black,
+                                        ),
+                                    // const DottedLine(
+                                    //   direction: Axis.vertical,
+                                    //   lineLength: 60,
+                                    //   dashLength: 6.0,
+                                    //   dashRadius: 0.8,
+                                    //   dashGapLength: 3.0,
+                                    //   dashGapRadius: 0.6,
+                                    // ),
+
+                                    // const Icon(
+                                    //   Icons.arrow_drop_down_rounded,
+                                    // ),
+                                    const CircleAvatar(
+                                      radius: 10,
+                                      backgroundColor: Colors.black,
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(width: 20),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Email Address:',
+                                      style: TextStyle(
+                                          color: LogisticColors.white,
+                                          fontSize: 16.sp),
+                                    ),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    SizedBox(
+                                      height: 40.h,
+                                      width: 260.w,
+                                      child: TextFormField(
+                                        cursorColor: LogisticColors.white,
+                                        decoration: InputDecoration(
+                                          hintText: "dummy@login.com",
+                                          hintStyle: const TextStyle(
+                                              color: LogisticColors.white),
+                                          fillColor: LogisticColors.white
+                                              .withOpacity(0.5),
+                                          filled: true,
+                                          border: const OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0)),
+                                            borderSide:
+                                                BorderSide(color: Colors.white),
+                                          ),
+                                          focusedBorder:
+                                              const OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0)),
+                                            borderSide:
+                                                BorderSide(color: Colors.white),
+                                          ),
+                                          enabledBorder:
+                                              const OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0)),
+                                            borderSide:
+                                                BorderSide(color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 50.h,
@@ -151,12 +249,120 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 25.h,
                       ),
                       Container(
+                        padding: const EdgeInsets.all(16.0),
                         margin: EdgeInsets.symmetric(horizontal: 18.sp),
-                        width: double.maxFinite,
-                        height: 200.h,
+                        width: 361.w,
+                        height: 240.h,
                         decoration: BoxDecoration(
-                            color: LogisticColors.primary,
-                            borderRadius: BorderRadius.circular(25)),
+                          color: LogisticColors.primary,
+                          borderRadius: BorderRadius.circular(25),
+                          image: const DecorationImage(
+                              image: AssetImage(
+                                  'lib/assets/images/background.png')),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16.0),
+                              child: Text(
+                                "Secure Sign In – Enter Your Details",
+                                style: TextStyle(
+                                  fontSize: 18.sp,
+                                  color: LogisticColors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Text(
+                              'Email Address:',
+                              style: TextStyle(
+                                  color: LogisticColors.white, fontSize: 16.sp),
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            SizedBox(
+                              height: 40.h,
+                              width: 290.w,
+                              child: TextFormField(
+                                cursorColor: LogisticColors.white,
+                                decoration: InputDecoration(
+                                  hintText: "dummy@login.com",
+                                  hintStyle: const TextStyle(
+                                      color: LogisticColors.white),
+                                  fillColor:
+                                      LogisticColors.white.withOpacity(0.5),
+                                  filled: true,
+                                  border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Text(
+                              'Password',
+                              style: TextStyle(
+                                  color: LogisticColors.white, fontSize: 16.sp),
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            SizedBox(
+                              height: 40.h,
+                              width: 290.w,
+                              child: TextFormField(
+                                cursorColor: LogisticColors.white,
+                                decoration: InputDecoration(
+                                  hintText: "✱✱✱✱✱✱✱✱",
+                                  suffixIcon: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Image.asset(
+                                        'lib/assets/images/Vector1.png'),
+                                  ),
+                                  hintStyle: const TextStyle(
+                                      color: LogisticColors.white),
+                                  fillColor:
+                                      LogisticColors.white.withOpacity(0.5),
+                                  filled: true,
+                                  border: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                  focusedBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                  enabledBorder: const OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 25.h,
@@ -211,9 +417,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               )
                             ])),
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      )
+                      // SizedBox(
+                      //   height: 20.h,
+                      // )
                     ],
                   );
                 }

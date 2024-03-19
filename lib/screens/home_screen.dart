@@ -1,3 +1,4 @@
+import 'package:logistic/screens/new_order_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/header_card.dart';
 import 'package:logistic/widgets/vechile_info_card.dart';
@@ -40,14 +41,27 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 40.w,
                     ),
-                    Container(
-                      height: 40.h,
-                      width: 40.h,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: LogisticColors.yellow),
-                      child: const Icon(
-                        Icons.add,
-                        color: LogisticColors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NewOrderScreen(
+                                    key: null,
+                                  )),
+                        );
+                      },
+                      child: Container(
+                        height: 40.h,
+                        width: 40.h,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: LogisticColors.yellow,
+                        ),
+                        child: const Icon(
+                          Icons.add,
+                          color: LogisticColors.white,
+                        ),
                       ),
                     )
                   ],
