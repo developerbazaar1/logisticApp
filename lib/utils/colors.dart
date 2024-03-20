@@ -8,4 +8,5 @@ class LogisticColors {
   static const Color grey = Color(0xFF999999);
   static const Color yellow = Color(0xFFFFB800);
   static const Color green = Color(0xFF1D9809);
+  static const Color buttonBlack = Color(0xFF222222);
 }

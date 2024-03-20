@@ -143,7 +143,7 @@ class VechileInfoCard extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(5),
                     decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(32)),
                         color: LogisticColors.yellow),

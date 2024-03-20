@@ -20,4 +20,7 @@ class LogisticIcons {
   static const String privacyPolicy = 'lib/assets/icons/privacy_policy.png';
   static const String termsAndCondition =
       'lib/assets/icons/terms_condition.png';
+  static const String edit = 'lib/assets/icons/edit.png';
+  static const String file = 'lib/assets/icons/file.png';
+  static const String download = 'lib/assets/icons/download.png';
 }

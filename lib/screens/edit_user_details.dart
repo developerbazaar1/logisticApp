@@ -27,7 +27,7 @@ class EditUserDetails extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.pop(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (builder) => const HomeScreen()));
