@@ -1,12 +1,16 @@
 import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
+import 'package:logistic/widgets/MyTextField.dart';
 import 'package:logistic/widgets/header_card.dart';
 
 class NewOrderScreen extends StatelessWidget {
-  const NewOrderScreen({super.key});
+  NewOrderScreen({super.key});
+  TextEditingController c = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+    final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -29,9 +33,11 @@ class NewOrderScreen extends StatelessWidget {
                     IconButton(
                         onPressed: () {
                           Navigator.pop(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) => const HomeScreen()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (builder) => const HomeScreen(),
+                            ),
+                          );
                         },
                         icon: const Icon(Icons.arrow_back)),
                     SizedBox(
@@ -89,87 +95,17 @@ class NewOrderScreen extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      Text(
-                        'Pickup Location',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Pickup Location',
+                          hintText: 'Warehouse ABC, Mumbai, Maharashtra'),
                       SizedBox(
-                        height: 4.h,
+                        height: 16.h,
                       ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "Warehouse ABC, Mumbai, Maharashtra",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        'Delivery Location',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "Customer XYZ's Shop, Pune, Maharashtra",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Delivery Location',
+                          hintText: "Customer XYZ's Shop, Pune, Maharashtra"),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -182,47 +118,12 @@ class NewOrderScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 20.h,
+                        height: 16.h,
                       ),
-                      Text(
-                        'Enter Departed Date & Time',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "Sumit Harwani",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Enter Departed Date & Time',
+                          hintText: 'Sumit Harwani'),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -235,131 +136,26 @@ class NewOrderScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 20.h,
+                        height: 16.h,
                       ),
-                      Text(
-                        "Driver's Name",
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: "Driver's Name",
+                          hintText: 'Rajesh Kumar'),
                       SizedBox(
-                        height: 5.h,
+                        height: 16.h,
                       ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: "Driver's Contact Number",
+                          hintText: '+91 98765 43210'),
                       SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: " Rajesh Kumar",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
+                        height: 16.h,
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        "Driver's Contact Number",
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "+91 98765 43210",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        "Driver's Vehicle Number",
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "MH-12-AB-1234",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: "Driver's Vehicle Number",
+                          hintText: 'MH-12-AB-1234'),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -372,89 +168,26 @@ class NewOrderScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 20.h,
+                        height: 16.h,
                       ),
-                      Text(
-                        'Manager’s Name',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Manager’s Name',
+                          hintText: 'Sumit Harwani'),
                       SizedBox(
-                        height: 5.h,
+                        height: 16.h,
                       ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Manager’s Contact Number',
+                          hintText: '+91 98765 43210'),
                       SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "Sumit Harwani",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
+                        height: 16.h,
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        'Manager’s Contact Number',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                        width: 290.w,
-                        child: TextFormField(
-                          cursorColor: LogisticColors.white,
-                          decoration: InputDecoration(
-                            hintText: "+91 98765 43210",
-                            hintStyle:
-                                const TextStyle(color: LogisticColors.white),
-                            fillColor: LogisticColors.white.withOpacity(0.5),
-                            filled: true,
-                            border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Manager’s Contact Number',
+                          hintText: '+91 98765 43210'),
                     ],
                   ),
                 ),

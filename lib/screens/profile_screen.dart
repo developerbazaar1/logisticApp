@@ -112,7 +112,7 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (builder) => const ChangePassword()));
+                            builder: (builder) => ChangePassword()));
                   },
                 ),
                 ProfileTile(

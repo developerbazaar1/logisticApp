@@ -1,5 +1,7 @@
-import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
+import 'package:logistic/widgets/DepartmentTextField.dart';
+import 'package:logistic/widgets/MyTextField.dart';
+import 'package:logistic/widgets/PasswordTextField.dart';
 
 import '../widgets/header_card.dart';
 
@@ -8,11 +10,13 @@ class AddUserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+    final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverAppBar(
         flexibleSpace: const HeaderCard(),
-        expandedHeight: 50.h,
+        expandedHeight: height * 0.04,
         floating: false,
         pinned: true,
         automaticallyImplyLeading: false,
@@ -21,48 +25,44 @@ class AddUserScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 20.h,
+              height: height * 0.04,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) => const HomeScreen()));
-                    },
-                    icon: const Icon(Icons.arrow_back)),
+                InkWell(
+                    onTap: () {}, child: const Icon(Icons.arrow_back_outlined)),
                 SizedBox(
-                  width: 50.w,
+                  width: width * 0.08,
                 ),
-                Text(
-                  'Add New User',
-                  style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                      color: LogisticColors.black),
+                Column(
+                  children: [
+                    Text(
+                      'Add New User',
+                      style: TextStyle(
+                          fontSize: width * 0.06,
+                          fontWeight: FontWeight.bold,
+                          color: LogisticColors.black),
+                    ),
+                    SizedBox(height: height * 0.01),
+                    Text(
+                      'Enter Details to Create a New User',
+                      style: TextStyle(
+                          fontSize: 16.sp, color: LogisticColors.black),
+                    ),
+                  ],
                 ),
                 const SizedBox.shrink()
               ],
             ),
-            SizedBox(
-              height: 4.h,
-            ),
-            Text(
-              'Enter Details to Create a New User',
-              style: TextStyle(fontSize: 16.sp, color: LogisticColors.black),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
+            SizedBox(height: height * 0.01),
             Container(
               width: double.maxFinite,
               margin: EdgeInsets.symmetric(horizontal: 20.w),
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
               decoration: BoxDecoration(
-                color: LogisticColors.yellow,
+                color: LogisticColors.primary,
                 borderRadius: BorderRadius.circular(25),
                 image: const DecorationImage(
                     image: AssetImage('lib/assets/images/background.png')),
@@ -96,271 +96,77 @@ class AddUserScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Row(
+                  //   children: [
+                  //     Column(
+                  //       children: [
+                  //         Container(
+                  //           width: 10,
+                  //           height: 10,
+                  //           color: Colors.black,
+                  //         ),
+                  //         const DottedLine(
+                  //           direction: Axis.vertical,
+                  //           lineLength: 60,
+                  //           dashLength: 6.0,
+                  //           dashRadius: 0.8,
+                  //           dashGapLength: 3.0,
+                  //           dashGapRadius: 0.6,
+                  //         ),
+                  // const Icon(
+                  //   Icons.arrow_drop_down_rounded,
+                  // ),
+                  //     const CircleAvatar(
+                  //       radius: 9,
+                  //       backgroundColor: Colors.black,
+                  //     )
+                  //   ],
+                  // ),
                   SizedBox(
                     height: 4.h,
                   ),
-                  Text(
-                    'Username',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "kulpatel_256",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+
+                  customeTextField(width, height, 'Username', 'kulpatel_256'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Name',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "Kuldeep Patel",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  customeTextField(width, height, 'Name', 'Kuldeep Patel'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Email Address',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "dummy@login.com",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  customeTextField(
+                      width, height, 'Email Address', 'dummy@login.com'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Phone Number',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "+91 9876543210",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+
+                  customeTextField(
+                      width, height, 'Phone Number', '+91 9876543210'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Department',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "Operations",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Responsibility',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "Manager",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+
+                  DepartmentTextField(
+                      width, height, 'Department', 'Operations'),
+
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Password',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
+
+                  DepartmentTextField(
+                      width, height, 'Responsibility', 'Manager'),
+
                   SizedBox(
-                    height: 5.h,
+                    height: 16.h,
                   ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "✱✱✱✱✱✱✱✱",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector1.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  PasswordTextField(width, height, 'Password', '✱✱✱✱✱✱✱✱'),
                 ],
+                // ),//row
+                // ],// children
               ),
             ),
             SizedBox(height: 10.h),

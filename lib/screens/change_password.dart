@@ -1,9 +1,11 @@
 import 'package:logistic/res/comman/app_text.dart';
 import 'package:logistic/utils/barrel.dart';
+import 'package:logistic/widgets/PasswordTextField.dart';
 import 'package:logistic/widgets/header_card.dart';
 
 class ChangePassword extends StatelessWidget {
-  const ChangePassword({super.key});
+  ChangePassword({super.key});
+  TextEditingController c = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,129 +54,18 @@ class ChangePassword extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Enter Old Password',
-                    style: TextStyle(
-                      color: LogisticColors.white,
-                      fontSize: 16.sp,
-                    ),
-                  ),
+                  PasswordTextField(
+                      width, height, 'Enter Old Password', '✱✱✱✱✱✱✱✱'),
                   SizedBox(
-                    height: 5.h,
+                    height: 16.h,
                   ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "✱✱✱✱✱✱✱✱",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector1.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  PasswordTextField(
+                      width, height, 'Enter New Password', '✱✱✱✱✱✱✱✱'),
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text(
-                    'Enter New Password',
-                    style: TextStyle(
-                      color: LogisticColors.white,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "✱✱✱✱✱✱✱✱",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector1.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    'Re-enter New Password',
-                    style: TextStyle(
-                      color: LogisticColors.white,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "✱✱✱✱✱✱✱✱",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector1.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  PasswordTextField(
+                      width, height, 'Re-enter New Password', '✱✱✱✱✱✱✱✱'),
                   SizedBox(
                     height: 20.h,
                   ),

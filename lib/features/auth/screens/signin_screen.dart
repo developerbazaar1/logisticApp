@@ -1,7 +1,10 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/gestures.dart';
 import 'package:logistic/res/comman/app_text.dart';
 import 'package:logistic/screens/bottom_navigation_screen.dart';
 import 'package:logistic/utils/barrel.dart';
+import 'package:logistic/widgets/MyTextField.dart';
+import 'package:logistic/widgets/PasswordTextField.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -109,7 +112,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         padding: const EdgeInsets.all(16.0),
                         margin: EdgeInsets.symmetric(horizontal: 18.sp),
                         height: 154,
-                        width: 361,
+                        width: double.maxFinite,
                         decoration: BoxDecoration(
                           color: LogisticColors.primary,
                           borderRadius: BorderRadius.circular(32),
@@ -121,13 +124,13 @@ class _SignInScreenState extends State<SignInScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             MyTextPoppines(
-                              text: 'Secure Sign In – Enter Your Details',
-                              fontSize: width * 0.039,
-                              fontWeight: FontWeight.bold,
-                              height: 2.0,
-                            ),
+                                text: 'Secure Sign In – Enter Your Details',
+                                fontSize: width * 0.039,
+                                fontWeight: FontWeight.bold,
+                                height: 2.0),
                             const SizedBox(height: 20),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Column(
                                   children: [
@@ -138,55 +141,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   ],
                                 ),
                                 const SizedBox(width: 20),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Email Address:',
-                                      style: TextStyle(
-                                          color: LogisticColors.white,
-                                          fontSize: 16.sp),
-                                    ),
-                                    SizedBox(
-                                      height: 5.h,
-                                    ),
-                                    SizedBox(
-                                      height: 40.h,
-                                      width: 260.w,
-                                      child: TextFormField(
-                                        cursorColor: LogisticColors.white,
-                                        decoration: InputDecoration(
-                                          hintText: "dummy@login.com",
-                                          hintStyle: const TextStyle(
-                                              color: LogisticColors.white),
-                                          fillColor: LogisticColors.white
-                                              .withOpacity(0.5),
-                                          filled: true,
-                                          border: const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                          focusedBorder:
-                                              const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                customeTextField(
+                                    width, height, 'Email Address:', '@gmail')
                               ],
                             ),
                           ],
@@ -219,11 +175,42 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Radius.circular(32),
                                 ),
                               ),
-                              child: MyTextPoppines(
-                                text: "Submit",
-                                color: LogisticColors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: width * 0.045,
+                              child: InkWell(
+                                onTap: () {
+                                  // Show dialog
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      // Return object of type Dialog
+                                      return AlertDialog(
+                                        backgroundColor: Colors.white,
+                                        title: const Text(
+                                          "Forgot Password!",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        content: const Text(
+                                          "Password reset instructions will be sent via email.",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        actions: <Widget>[
+                                          // Close button
+                                          TextButton(
+                                            child: const Text("Close"),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: MyTextPoppines(
+                                  text: "Submit",
+                                  color: LogisticColors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: width * 0.045,
+                                ),
                               )),
                         ),
                       ),
@@ -262,8 +249,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
-                          margin: EdgeInsets.symmetric(horizontal: 18.sp),
-                          width: 361.w,
+                          // margin: EdgeInsets.symmetric(horizontal: 18.sp),
+                          width: double.maxFinite,
                           height: 240.h,
                           // width: width * 0.361,
                           // height: height *  0.240,
@@ -274,152 +261,61 @@ class _SignInScreenState extends State<SignInScreen> {
                                 image: AssetImage(
                                     'lib/assets/images/background.png')),
                           ),
-                          child: Padding(
-                            padding:
-                                EdgeInsets.symmetric(horizontal: width * 0.06),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                MyTextPoppines(
-                                  text: 'Secure Sign In – Enter Your Details',
-                                  fontSize: width * 0.039,
-                                  fontWeight: FontWeight.bold,
-                                  height: 2.0,
-                                ),
-                                SizedBox(height: height * 0.016),
-                                // Row(
-                                //children: [
-                                //const Column(
-                                //children: [
-                                // Container(
-                                //   width: 10,
-                                //   height: 10,
-                                //   color: Colors.black,
-                                // ),
-                                // const DottedLine(
-                                //   direction: Axis.vertical,
-                                //   lineLength: 60,
-                                //   dashLength: 6.0,
-                                //   dashRadius: 0.8,
-                                //   dashGapLength: 3.0,
-                                //   dashGapRadius: 0.6,
-                                // ),
-
-                                // Icon(
-                                //   Icons.arrow_drop_down_rounded,
-                                // ),
-                                // CircleAvatar(
-                                //   radius: 9,
-                                //   backgroundColor: Colors.black,
-                                // )
-                                //],
-                                //),
-                                const SizedBox(width: 20),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Email Address:',
-                                      style: TextStyle(
-                                          color: LogisticColors.white,
-                                          fontSize: 16.sp),
-                                    ),
-                                    SizedBox(
-                                      height: 5.h,
-                                    ),
-                                    SizedBox(
-                                      height: 40.h,
-                                      width: 260.w,
-                                      child: TextFormField(
-                                        cursorColor: LogisticColors.white,
-                                        decoration: InputDecoration(
-                                          hintText: "dummy@login.com",
-                                          hintStyle: const TextStyle(
-                                              color: LogisticColors.white),
-                                          fillColor: LogisticColors.white
-                                              .withOpacity(0.5),
-                                          filled: true,
-                                          border: const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                          focusedBorder:
-                                              const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                        ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              MyTextPoppines(
+                                text: 'Secure Sign In – Enter Your Details',
+                                fontSize: width * 0.039,
+                                fontWeight: FontWeight.bold,
+                                height: 2.0,
+                              ),
+                              SizedBox(height: height * 0.016),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Container(
+                                        width: 12,
+                                        height: 12,
+                                        color: Colors.black,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 20.h,
-                                    ),
-                                    Text(
-                                      'Password',
-                                      style: TextStyle(
-                                          color: LogisticColors.white,
-                                          fontSize: 16.sp),
-                                    ),
-                                    SizedBox(
-                                      height: 5.h,
-                                    ),
-                                    SizedBox(
-                                      height: 40.h,
-                                      width: 290.w,
-                                      child: TextFormField(
-                                        cursorColor: LogisticColors.white,
-                                        decoration: InputDecoration(
-                                          hintText: "✱✱✱✱✱✱✱✱",
-                                          suffixIcon: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Image.asset(
-                                                'lib/assets/images/Vector1.png'),
-                                          ),
-                                          hintStyle: const TextStyle(
-                                              color: LogisticColors.white),
-                                          fillColor: LogisticColors.white
-                                              .withOpacity(0.5),
-                                          filled: true,
-                                          border: const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                          focusedBorder:
-                                              const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0)),
-                                            borderSide:
-                                                BorderSide(color: Colors.white),
-                                          ),
-                                        ),
+                                      const DottedLine(
+                                        direction: Axis.vertical,
+                                        lineLength: 70,
+                                        dashLength: 4.0,
+                                        dashRadius: 1.0,
+                                        dashGapLength: 4.0,
+                                        dashGapRadius: 0.6,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                              //),Row
-                              //], childern
-                            ),
+                                      // const Icon(
+                                      //   Icons.arrow_drop_down_rounded,
+                                      // ),
+                                      const CircleAvatar(
+                                        radius: 9,
+                                        backgroundColor: Colors.black,
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Column(
+                                    children: [
+                                      customeTextField(width, height,
+                                          'Email Address:', '@gmail.com'),
+                                      SizedBox(
+                                        height: 9.h,
+                                      ),
+                                      PasswordTextField(width, height,
+                                          'Password', '✱✱✱✱✱✱✱✱'),
+                                    ],
+                                  ),
+                                ], //children
+                              ),
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(height: height * 0.04),

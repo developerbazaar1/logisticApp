@@ -1,5 +1,7 @@
 import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
+import 'package:logistic/widgets/MyTextField.dart';
+import 'package:logistic/widgets/PasswordTextField.dart';
 
 import '../widgets/header_card.dart';
 
@@ -8,6 +10,9 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+    final height = MediaQuery.sizeOf(context).height;
+
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverAppBar(
@@ -102,151 +107,21 @@ class EditProfile extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Name',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "Kuldeep Patel",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  customeTextField(width, height, 'Name', 'Kuldeep Patel'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Email Address',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "dummy@login.com",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  customeTextField(
+                      width, height, 'Email Address', 'dummy@login.com'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Phone Number',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "+91 9876543210",
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  customeTextField(
+                      width, height, 'Phone Number', '+91 9876543210'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text(
-                    'Password',
-                    style:
-                        TextStyle(color: LogisticColors.white, fontSize: 16.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  SizedBox(
-                    height: 40.h,
-                    width: 290.w,
-                    child: TextFormField(
-                      cursorColor: LogisticColors.white,
-                      decoration: InputDecoration(
-                        hintText: "✱✱✱✱✱✱✱✱",
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Image.asset('lib/assets/images/Vector1.png'),
-                        ),
-                        hintStyle: const TextStyle(color: LogisticColors.white),
-                        fillColor: LogisticColors.white.withOpacity(0.5),
-                        filled: true,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  PasswordTextField(width, height, 'Password', '✱✱✱✱✱✱✱✱'),
                 ],
               ),
             ),
