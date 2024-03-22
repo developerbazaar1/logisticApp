@@ -1,5 +1,3 @@
-// ignore: file_names
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logistic/res/comman/app_text.dart';
 import 'package:logistic/utils/barrel.dart';
@@ -12,6 +10,7 @@ class MyTextFeild extends StatelessWidget {
   final Color? fillColor;
   final int? maxLines;
   final FocusNode? focusNode;
+  final String? img;
   final Function(String)? onSubmit;
   final String? Function(String?)? validator;
   const MyTextFeild({
@@ -19,6 +18,7 @@ class MyTextFeild extends StatelessWidget {
     required this.controller,
     required this.headingText,
     required this.hintText,
+    this.img,
     this.fillColor,
     this.validator,
     this.focusNode,
@@ -56,6 +56,7 @@ class MyTextFeild extends StatelessWidget {
             cursorColor: Colors.white,
             maxLines: maxLines ?? 1,
             decoration: InputDecoration(
+              suffixIcon: img != null ? Image.asset(img!) : const SizedBox(),
               contentPadding: EdgeInsets.only(top: 0, left: width * 0.03),
               floatingLabelBehavior: FloatingLabelBehavior.never,
               hintText: hintText,
@@ -64,7 +65,7 @@ class MyTextFeild extends StatelessWidget {
                 fontSize: width * 0.036,
                 fontWeight: FontWeight.w300,
               ),
-              fillColor: fillColor ?? Colors.white,
+              fillColor: fillColor ?? Colors.white.withOpacity(0.65),
               filled: true,
               border: lineBorder,
               focusedBorder: OutlineInputBorder(

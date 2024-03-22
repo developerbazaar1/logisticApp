@@ -1,12 +1,12 @@
+import 'package:logistic/res/comman/app_text.dart';
 import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
-import 'package:logistic/widgets/DepartmentTextField.dart';
 import 'package:logistic/widgets/MyTextField.dart';
-import 'package:logistic/widgets/PasswordTextField.dart';
 import 'package:logistic/widgets/header_card.dart';
 
 class EditUserDetails extends StatelessWidget {
-  const EditUserDetails({super.key});
+  TextEditingController c = TextEditingController();
+  EditUserDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -105,35 +105,58 @@ class EditUserDetails extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
-                  customeTextField(width, height, 'Username', 'kulpatel_256'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Username',
+                      hintText: 'kulpatel_256'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(width, height, 'Name', 'Kuldeep Patel'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Name',
+                      hintText: 'Kuldeep Patel'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(
-                      width, height, 'Email Address', 'dummy@login.com'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Email Address',
+                      hintText: 'dummy@login.com'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(
-                      width, height, 'Phone Number', '+91 9876543210'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Phone Number',
+                      hintText: '+91 9876543210'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  DepartmentTextField(
-                      width, height, 'Department', 'Operations'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Department',
+                    hintText: 'Operations',
+                    img: 'lib/assets/images/Vector.png',
+                  ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  DepartmentTextField(
-                      width, height, 'Responsibility', 'Manager'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Responsibility',
+                    hintText: 'Manager',
+                    img: 'lib/assets/images/Vector.png',
+                  ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  PasswordTextField(width, height, 'Password', '✱✱✱✱✱✱✱✱'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Password',
+                    hintText: '✱✱✱✱✱✱✱✱',
+                    img: 'lib/assets/images/Vector1.png',
+                  ),
                 ],
               ),
             ),
@@ -143,26 +166,65 @@ class EditUserDetails extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (builder) =>
-                  //             const BottomNavigationScreen()));
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const HomeScreen(),
+                  //   ),
+                  // );
                 },
                 child: Container(
-                    width: 200.w,
-                    height: 52.h,
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: LogisticColors.black,
-                        borderRadius: BorderRadius.circular(32)),
-                    child: Text('Save',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w700,
-                        ))),
+                    padding: EdgeInsets.symmetric(vertical: height * 0.02),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.10),
+                    decoration: const BoxDecoration(
+                      color: LogisticColors.buttonBlack,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(32),
+                      ),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        // Show dialog
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            // Return object of type Dialog
+                            return AlertDialog(
+                              backgroundColor: Colors.white,
+                              title: const Text(
+                                "User Details Updated",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              content: const Text(
+                                "You have successfully updated the details of the user. ",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              actions: <Widget>[
+                                // Close button
+                                TextButton(
+                                  child: const Text(
+                                    "View Users",
+                                    style:
+                                        TextStyle(color: LogisticColors.black),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: MyTextPoppines(
+                        text: "Save",
+                        color: LogisticColors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: width * 0.045,
+                      ),
+                    )),
               ),
-            )
+            ),
           ],
         ),
       )

@@ -117,8 +117,7 @@ class ViewEditOrderDetails extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const EditShipmentDetails()),
+                                  builder: (context) => EditShipmentDetails()),
                             );
                           },
                           child: Image.asset(LogisticIcons.edit))

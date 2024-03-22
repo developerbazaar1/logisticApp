@@ -1,12 +1,14 @@
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistic/res/comman/app_text.dart';
+import 'package:logistic/screens/bottom_navigation_screen.dart';
 import 'package:logistic/utils/barrel.dart';
-import 'package:logistic/widgets/DepartmentTextField.dart';
 import 'package:logistic/widgets/MyTextField.dart';
-import 'package:logistic/widgets/PasswordTextField.dart';
 
 import '../widgets/header_card.dart';
 
 class AddUserScreen extends StatelessWidget {
-  const AddUserScreen({super.key});
+  TextEditingController c = TextEditingController();
+  AddUserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,15 @@ class AddUserScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                    onTap: () {}, child: const Icon(Icons.arrow_back_outlined)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const BottomNavigationScreen(),
+                          ));
+                    },
+                    child: const Icon(Icons.arrow_back_outlined)),
                 SizedBox(
                   width: width * 0.08,
                 ),
@@ -65,6 +75,7 @@ class AddUserScreen extends StatelessWidget {
                 color: LogisticColors.primary,
                 borderRadius: BorderRadius.circular(25),
                 image: const DecorationImage(
+                    fit: BoxFit.fill,
                     image: AssetImage('lib/assets/images/background.png')),
               ),
               child: Column(
@@ -126,44 +137,71 @@ class AddUserScreen extends StatelessWidget {
                     height: 4.h,
                   ),
 
-                  customeTextField(width, height, 'Username', 'kulpatel_256'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Username',
+                      hintText: 'kulpatel_256'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(width, height, 'Name', 'Kuldeep Patel'),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  customeTextField(
-                      width, height, 'Email Address', 'dummy@login.com'),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-
-                  customeTextField(
-                      width, height, 'Phone Number', '+91 9876543210'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Name',
+                      hintText: 'Kuldeep Patel'),
                   SizedBox(
                     height: 16.h,
                   ),
 
-                  SizedBox(
-                    height: 16.h,
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Email Address',
+                    hintText: 'dummy@login.com',
                   ),
-
-                  DepartmentTextField(
-                      width, height, 'Department', 'Operations'),
 
                   SizedBox(
                     height: 16.h,
                   ),
 
-                  DepartmentTextField(
-                      width, height, 'Responsibility', 'Manager'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Phone Number',
+                      hintText: '+91 9876543210'),
 
                   SizedBox(
                     height: 16.h,
                   ),
-                  PasswordTextField(width, height, 'Password', '✱✱✱✱✱✱✱✱'),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Department',
+                    hintText: 'Operations',
+                    img: 'lib/assets/images/Vector.png',
+                  ),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Responsibility',
+                    hintText: 'Manager',
+                    img: 'lib/assets/images/Vector.png',
+                  ),
+
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Password',
+                    hintText: '✱✱✱✱✱✱✱✱',
+                    img: 'lib/assets/images/Vector1.png',
+                  ),
                 ],
                 // ),//row
                 // ],// children
@@ -175,26 +213,79 @@ class AddUserScreen extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (builder) =>
-                  //             const BottomNavigationScreen()));
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const HomeScreen(),
+                  //   ),
+                  // );
                 },
                 child: Container(
-                    width: 200.w,
-                    height: 52.h,
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: LogisticColors.black,
-                        borderRadius: BorderRadius.circular(32)),
-                    child: Text('Save',
-                        style: TextStyle(
-                          color: LogisticColors.white,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w700,
-                        ))),
+                    padding: EdgeInsets.symmetric(vertical: height * 0.02),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.10),
+                    decoration: const BoxDecoration(
+                      color: LogisticColors.buttonBlack,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(32),
+                      ),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        // Show dialog
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            // Return object of type Dialog
+                            return AlertDialog(
+                              backgroundColor: Colors.white,
+                              title: Column(
+                                children: [
+                                  Image.asset('lib/assets/gif/gif4.gif',
+                                      width: 150, height: 150),
+                                  SizedBox(height: height * 0.00),
+                                  Text(
+                                    "New User Added Successfully!",
+                                    style: GoogleFonts.roboto(
+                                      textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            18, // Adjust font size as needed
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              content: const Text(
+                                "Congratulations! You have successfully added a new user to the system. ",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              actions: <Widget>[
+                                // Close button
+                                TextButton(
+                                  child: const Text(
+                                    "View Users",
+                                    style:
+                                        TextStyle(color: LogisticColors.black),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: MyTextPoppines(
+                        text: "Save",
+                        color: LogisticColors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: width * 0.045,
+                      ),
+                    )),
               ),
-            )
+            ),
           ],
         ),
       ),

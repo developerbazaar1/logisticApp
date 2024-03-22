@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: 10.0),
                       child: VechileInfoCard(),
                     ),
-                itemCount: 10),
+                itemCount: 2),
           )
         ],
       ),

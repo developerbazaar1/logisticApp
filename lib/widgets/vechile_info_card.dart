@@ -42,8 +42,8 @@ class VechileInfoCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -53,13 +53,16 @@ class VechileInfoCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
+                      const Text(
                         'From',
                         style: TextStyle(color: Color(0xFF919398)),
                       ),
                       Text(
                         'Manufacturer\'s Warehouse',
-                        style: TextStyle(color: LogisticColors.black),
+                        style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                            color: LogisticColors.black),
                       ),
                     ],
                   )),
@@ -69,21 +72,24 @@ class VechileInfoCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'To',
                         style: TextStyle(color: Color(0xFF919398)),
                       ),
                       Text(
                         'Townsville, State',
-                        style: TextStyle(color: LogisticColors.black),
+                        style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                            color: LogisticColors.black),
                       ),
                     ],
                   )),
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10.0),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -93,13 +99,16 @@ class VechileInfoCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
+                      const Text(
                         'Driver Name:',
                         style: TextStyle(color: Color(0xFF919398)),
                       ),
                       Text(
                         'Rajesh Kumar',
-                        style: TextStyle(color: LogisticColors.black),
+                        style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                            color: LogisticColors.black),
                       ),
                     ],
                   )),
@@ -109,13 +118,16 @@ class VechileInfoCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Manage By:',
                         style: TextStyle(color: Color(0xFF919398)),
                       ),
                       Text(
                         'Sumit Harwani',
-                        style: TextStyle(color: LogisticColors.black),
+                        style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                            color: LogisticColors.black),
                       ),
                     ],
                   )),
@@ -127,25 +139,28 @@ class VechileInfoCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Departed Date & Time:',
                         style: TextStyle(color: Color(0xFF919398)),
                       ),
                       Text(
                         'February 15, 2024, 09:00 AM',
-                        style: TextStyle(color: LogisticColors.black),
+                        style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                            color: LogisticColors.black),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(4),
                     decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(32)),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
                         color: LogisticColors.yellow),
                     child: Row(
                       children: [
@@ -153,10 +168,10 @@ class VechileInfoCard extends StatelessWidget {
                           'View/Edit',
                           style: TextStyle(
                               color: LogisticColors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w400),
                         ),
                         SizedBox(
-                          width: 10.w,
+                          width: 8.w,
                         ),
                         GestureDetector(
                           onTap: () {

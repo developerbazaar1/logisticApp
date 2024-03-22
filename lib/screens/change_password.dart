@@ -1,6 +1,7 @@
 import 'package:logistic/res/comman/app_text.dart';
+import 'package:logistic/screens/profile_screen.dart';
 import 'package:logistic/utils/barrel.dart';
-import 'package:logistic/widgets/PasswordTextField.dart';
+import 'package:logistic/widgets/MyTextField.dart';
 import 'package:logistic/widgets/header_card.dart';
 
 class ChangePassword extends StatelessWidget {
@@ -20,13 +21,26 @@ class ChangePassword extends StatelessWidget {
             SizedBox(
               height: 24.h,
             ),
-            Text(
-              'Change Password',
-              style: TextStyle(
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-                color: LogisticColors.black,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) => const ProfileScreen()));
+                    },
+                    icon: const Icon(Icons.arrow_back)),
+                Text(
+                  'Change Password',
+                  style: TextStyle(
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.bold,
+                    color: LogisticColors.black,
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 10.h,
@@ -54,18 +68,30 @@ class ChangePassword extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PasswordTextField(
-                      width, height, 'Enter Old Password', '✱✱✱✱✱✱✱✱'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Enter Old Password',
+                    hintText: '✱✱✱✱✱✱✱✱',
+                    img: 'lib/assets/images/Vector1.png',
+                  ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  PasswordTextField(
-                      width, height, 'Enter New Password', '✱✱✱✱✱✱✱✱'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Enter New Password',
+                    hintText: '✱✱✱✱✱✱✱✱',
+                    img: 'lib/assets/images/Vector1.png',
+                  ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  PasswordTextField(
-                      width, height, 'Re-enter New Password', '✱✱✱✱✱✱✱✱'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Re-enter New Password',
+                    hintText: '✱✱✱✱✱✱✱✱',
+                    img: 'lib/assets/images/Vector1.png',
+                  ),
                   SizedBox(
                     height: 20.h,
                   ),

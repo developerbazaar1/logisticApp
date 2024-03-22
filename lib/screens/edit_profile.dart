@@ -1,12 +1,12 @@
 import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/MyTextField.dart';
-import 'package:logistic/widgets/PasswordTextField.dart';
 
 import '../widgets/header_card.dart';
 
 class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+  EditProfile({super.key});
+  TextEditingController c = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -107,21 +107,33 @@ class EditProfile extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(width, height, 'Name', 'Kuldeep Patel'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Name',
+                      hintText: 'Kuldeep Patel'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(
-                      width, height, 'Email Address', 'dummy@login.com'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Email Address',
+                      hintText: 'dummy@login.com'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  customeTextField(
-                      width, height, 'Phone Number', '+91 9876543210'),
+                  MyTextFeild(
+                      controller: c,
+                      headingText: 'Phone Number',
+                      hintText: '+91 9876543210'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  PasswordTextField(width, height, 'Password', '✱✱✱✱✱✱✱✱'),
+                  MyTextFeild(
+                    controller: c,
+                    headingText: 'Password',
+                    hintText: '✱✱✱✱✱✱✱✱',
+                    img: 'lib/assets/images/Vector1.png',
+                  ),
                 ],
               ),
             ),

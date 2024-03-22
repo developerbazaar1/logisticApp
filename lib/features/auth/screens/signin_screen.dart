@@ -1,10 +1,10 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/gestures.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logistic/res/comman/app_text.dart';
 import 'package:logistic/screens/bottom_navigation_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/MyTextField.dart';
-import 'package:logistic/widgets/PasswordTextField.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -16,6 +16,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   ValueNotifier<bool> isForgotSectionVisibleSection =
       ValueNotifier<bool>(false);
+  TextEditingController c = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
@@ -128,7 +129,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 fontSize: width * 0.039,
                                 fontWeight: FontWeight.bold,
                                 height: 2.0),
-                            const SizedBox(height: 20),
+                            SizedBox(height: height * 0.016),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -140,9 +141,20 @@ class _SignInScreenState extends State<SignInScreen> {
                                     )
                                   ],
                                 ),
+                                const SizedBox(width: 5),
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      MyTextFeild(
+                                          controller: c,
+                                          headingText: "Email Address:",
+                                          hintText: "dummy@login.com"),
+                                    ],
+                                  ),
+                                ),
                                 const SizedBox(width: 20),
-                                customeTextField(
-                                    width, height, 'Email Address:', '@gmail')
+                                // customeTextField(
+                                //     width, height, 'Email Address:', '@gmail')
                               ],
                             ),
                           ],
@@ -184,21 +196,67 @@ class _SignInScreenState extends State<SignInScreen> {
                                       // Return object of type Dialog
                                       return AlertDialog(
                                         backgroundColor: Colors.white,
-                                        title: const Text(
-                                          "Forgot Password!",
-                                          style: TextStyle(color: Colors.black),
+                                        title: Column(
+                                          children: [
+                                            Image.asset(
+                                                'lib/assets/gif/gif1.gif',
+                                                width: 80,
+                                                height: 82),
+                                            SizedBox(height: height * 0.02),
+                                            Text(
+                                              "Forgot Password!",
+                                              style: GoogleFonts.roboto(
+                                                textStyle: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize:
+                                                      18, // Adjust font size as needed
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        content: const Text(
+                                        content: Text(
                                           "Password reset instructions will be sent via email.",
-                                          style: TextStyle(color: Colors.black),
+                                          style: GoogleFonts.roboto(
+                                            textStyle: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize:
+                                                  16, // Adjust font size as needed
+                                            ),
+                                          ),
                                         ),
                                         actions: <Widget>[
                                           // Close button
-                                          TextButton(
-                                            child: const Text("Close"),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
+                                          Center(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors
+                                                    .black, // Background color
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        32), // Rounded corners
+                                              ),
+                                              child: TextButton(
+                                                child: Text(
+                                                  "Back to Login",
+                                                  style: TextStyle(
+                                                    color: LogisticColors.white,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: width * 0.045,
+                                                  ),
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const SignInScreen()),
+                                                  );
+                                                },
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       );
@@ -276,14 +334,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                 children: [
                                   Column(
                                     children: [
+                                      SizedBox(height: height * 0.016),
                                       Container(
-                                        width: 12,
-                                        height: 12,
+                                        width: 14,
+                                        height: 14,
                                         color: Colors.black,
                                       ),
                                       const DottedLine(
                                         direction: Axis.vertical,
-                                        lineLength: 70,
+                                        lineLength: 60,
                                         dashLength: 4.0,
                                         dashRadius: 1.0,
                                         dashGapLength: 4.0,
@@ -299,16 +358,24 @@ class _SignInScreenState extends State<SignInScreen> {
                                     ],
                                   ),
                                   const SizedBox(width: 5),
-                                  Column(
-                                    children: [
-                                      customeTextField(width, height,
-                                          'Email Address:', '@gmail.com'),
-                                      SizedBox(
-                                        height: 9.h,
-                                      ),
-                                      PasswordTextField(width, height,
-                                          'Password', '✱✱✱✱✱✱✱✱'),
-                                    ],
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        MyTextFeild(
+                                            controller: c,
+                                            headingText: "Email Address:",
+                                            hintText: "dummy@login.com"),
+                                        SizedBox(
+                                          height: 9.h,
+                                        ),
+                                        MyTextFeild(
+                                            controller: c,
+                                            headingText: "Password",
+                                            hintText: "✱✱✱✱✱✱✱✱",
+                                            img:
+                                                'lib/assets/images/Vector1.png'),
+                                      ],
+                                    ),
                                   ),
                                 ], //children
                               ),

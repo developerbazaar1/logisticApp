@@ -1,3 +1,6 @@
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistic/res/comman/app_text.dart';
+import 'package:logistic/screens/bottom_navigation_screen.dart';
 import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/MyTextField.dart';
@@ -188,6 +191,13 @@ class NewOrderScreen extends StatelessWidget {
                           controller: c,
                           headingText: 'Manager’s Contact Number',
                           hintText: '+91 98765 43210'),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Client Name',
+                          hintText: 'Shiva Kapoor')
                     ],
                   ),
                 ),
@@ -197,26 +207,102 @@ class NewOrderScreen extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
                       // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (builder) =>
-                      //             const BottomNavigationScreen()));
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const HomeScreen(),
+                      //   ),
+                      // );
                     },
                     child: Container(
-                        width: 200.w,
-                        height: 52.h,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: LogisticColors.black,
-                            borderRadius: BorderRadius.circular(32)),
-                        child: Text('Save',
-                            style: TextStyle(
-                              color: LogisticColors.white,
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w700,
-                            ))),
+                        padding: EdgeInsets.symmetric(vertical: height * 0.02),
+                        margin: EdgeInsets.symmetric(horizontal: width * 0.10),
+                        decoration: const BoxDecoration(
+                          color: LogisticColors.buttonBlack,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(32),
+                          ),
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            // Show dialog
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                // Return object of type Dialog
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: Column(
+                                    children: [
+                                      Image.asset('lib/assets/gif/gif2.gif',
+                                          width: 150, height: 150),
+                                      SizedBox(height: height * 0.00),
+                                      Text(
+                                        "Congratulations!",
+                                        style: GoogleFonts.roboto(
+                                          textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                18, // Adjust font size as needed
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  content: Text(
+                                    "Your order shipment has been successfully created You will receive further updates regarding the shipment status shortly.",
+                                    style: GoogleFonts.roboto(
+                                      textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize:
+                                            14, // Adjust font size as needed
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    Center(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Colors.black, // Background color
+                                          borderRadius: BorderRadius.circular(
+                                              25), // Rounded corners
+                                        ),
+                                        child: TextButton(
+                                          child: Text(
+                                            "Okay",
+                                            style: TextStyle(
+                                              color: LogisticColors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: width * 0.045,
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const BottomNavigationScreen()),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: MyTextPoppines(
+                            text: "Save",
+                            color: LogisticColors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: width * 0.045,
+                          ),
+                        )),
                   ),
-                )
+                ),
               ],
             ),
           )

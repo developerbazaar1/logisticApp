@@ -1,10 +1,14 @@
+import 'package:google_fonts/google_fonts.dart';
+import 'package:logistic/res/comman/app_text.dart';
+import 'package:logistic/screens/bottom_navigation_screen.dart';
 import 'package:logistic/screens/view_edit_order_details.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/MyTextField.dart';
 import 'package:logistic/widgets/header_card.dart';
 
 class EditShipmentDetails extends StatelessWidget {
-  const EditShipmentDetails({super.key});
+  TextEditingController c = TextEditingController();
+  EditShipmentDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,13 +98,17 @@ class EditShipmentDetails extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(width, height, 'Pickup Location',
-                          'Warehouse ABC, Mumbai, Maharashtra'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Pickup Location',
+                          hintText: 'Warehouse ABC, Mumbai, Maharashtra'),
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(width, height, 'Delivery Location',
-                          "Customer XYZ's Shop, Pune, Maharashtra"),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Delivery Location',
+                          hintText: "Customer XYZ's Shop, Pune, Maharashtra"),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -115,8 +123,10 @@ class EditShipmentDetails extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(width, height,
-                          'Enter Departed Date & Time', 'Sumit Harwani'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Enter Departed Date & Time',
+                          hintText: 'Sumit Harwani'),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -131,18 +141,24 @@ class EditShipmentDetails extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(
-                          width, height, "Driver's Name", 'Rajesh Kumar'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: "Driver's Name",
+                          hintText: 'Rajesh Kumar'),
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(width, height, "Driver's Contact Number",
-                          '+91 98765 43210'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: "Driver's Contact Number",
+                          hintText: '+91 98765 43210'),
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(height, width, "Driver's Vehicle Number",
-                          'MH-12-AB-1234'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: "Driver's Vehicle Number",
+                          hintText: 'MH-12-AB-1234'),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -157,13 +173,17 @@ class EditShipmentDetails extends StatelessWidget {
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(
-                          width, height, 'Manager’s Name', 'Sumit Harwani'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Manager’s Name',
+                          hintText: 'Sumit Harwani'),
                       SizedBox(
                         height: 20.h,
                       ),
-                      customeTextField(width, height,
-                          'Manager’s Contact Number', '+91 98765 43210'),
+                      MyTextFeild(
+                          controller: c,
+                          headingText: 'Manager’s Contact Number',
+                          hintText: '+91 98765 43210'),
                     ],
                   ),
                 ),
@@ -173,26 +193,115 @@ class EditShipmentDetails extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
                       // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (builder) =>
-                      //             const BottomNavigationScreen()));
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const HomeScreen(),
+                      //   ),
+                      // );
                     },
                     child: Container(
-                        width: 200.w,
-                        height: 52.h,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: LogisticColors.black,
-                            borderRadius: BorderRadius.circular(32)),
-                        child: Text('Save',
-                            style: TextStyle(
-                              color: LogisticColors.white,
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w700,
-                            ))),
+                        padding: EdgeInsets.symmetric(vertical: height * 0.02),
+                        margin: EdgeInsets.symmetric(horizontal: width * 0.10),
+                        decoration: const BoxDecoration(
+                          color: LogisticColors.buttonBlack,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(32),
+                          ),
+                        ),
+                        // child: InkWell(
+                        //   onTap: () {
+                        //     // Show dialog
+                        //     showDialog(
+                        //       context: context,
+                        //       builder: (BuildContext context) {
+                        //         // Return object of type Dialog
+                        //         return AlertDialog(
+                        //           backgroundColor: Colors.white,
+                        //           title: const Text(
+                        //             "Shipment Details Updated",
+                        //             style: TextStyle(color: Colors.black),
+                        //           ),
+                        child: InkWell(
+                          onTap: () {
+                            // Show dialog
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                // Return object of type Dialog
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: Column(
+                                    children: [
+                                      Image.asset('lib/assets/gif/gif3.gif',
+                                          width: 200, height: 200),
+                                      Text(
+                                        "Shipment Details Updated",
+                                        style: GoogleFonts.roboto(
+                                          textStyle: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize:
+                                                18, // Adjust font size as needed
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  content: Text(
+                                    "The shipment details have been successfully updated Any changes made to the shipment have been saved.",
+                                    style: GoogleFonts.roboto(
+                                      textStyle: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize:
+                                            14, // Adjust font size as needed
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    // Close button
+                                    Center(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Colors.black, // Background color
+                                          borderRadius: BorderRadius.circular(
+                                              25), // Rounded corners
+                                        ),
+                                        child: TextButton(
+                                          child: Text(
+                                            "Okay",
+                                            style: TextStyle(
+                                              color: LogisticColors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: width * 0.045,
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const BottomNavigationScreen()),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          child: MyTextPoppines(
+                            text: "Save",
+                            color: LogisticColors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: width * 0.045,
+                          ),
+                        )),
                   ),
-                )
+                ),
               ],
             ),
           )

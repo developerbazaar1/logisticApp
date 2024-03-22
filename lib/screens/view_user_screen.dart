@@ -1,4 +1,5 @@
 import 'package:logistic/screens/edit_user_details.dart';
+import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/header_card.dart';
 
@@ -12,24 +13,40 @@ class ViewUserScreen extends StatelessWidget {
         children: [
           const HeaderCard(),
           SizedBox(
-            height: 24.h,
+            height: 16.h,
           ),
-          Text(
-            'User Management',
-            style: TextStyle(
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-                color: LogisticColors.black),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => const HomeScreen()));
+                  },
+                  icon: const Icon(Icons.arrow_back)),
+              SizedBox(
+                width: 64.w,
+              ),
+              Text(
+                'User Management',
+                style: TextStyle(
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.bold,
+                    color: LogisticColors.black),
+              ),
+            ],
           ),
           SizedBox(
-            height: 10.h,
+            height: 2.h,
           ),
           Text(
             'View and Manage Users',
             style: TextStyle(fontSize: 16.sp, color: LogisticColors.black),
           ),
           SizedBox(
-            height: 20.h,
+            height: 9.h,
           ),
           Expanded(
               child: ListView.builder(
@@ -115,7 +132,7 @@ class ViewUserScreen extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (builder) =>
-                                                const EditUserDetails()));
+                                                EditUserDetails()));
                                   },
                                   child: const Icon(
                                     Icons.border_color,
@@ -133,7 +150,7 @@ class ViewUserScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                  itemCount: 5))
+                  itemCount: 3))
         ],
       ),
     );

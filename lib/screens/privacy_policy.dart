@@ -1,3 +1,4 @@
+import 'package:logistic/screens/profile_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/header_card.dart';
 
@@ -13,12 +14,25 @@ class PrivacyPolicy extends StatelessWidget {
         SizedBox(
           height: 24.h,
         ),
-        Text(
-          'Privacy Policy',
-          style: TextStyle(
-              fontSize: 24.sp,
-              fontWeight: FontWeight.bold,
-              color: LogisticColors.black),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => const ProfileScreen()));
+                },
+                icon: const Icon(Icons.arrow_back)),
+            Text(
+              'Privacy Policy',
+              style: TextStyle(
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.bold,
+                  color: LogisticColors.black),
+            ),
+          ],
         ),
         SizedBox(
           height: 10.h,

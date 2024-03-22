@@ -99,10 +99,8 @@ class ProfileScreen extends StatelessWidget {
                   iconName: LogisticIcons.editProfile,
                   title: 'Edit Profile',
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (builder) => const EditProfile()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (builder) => EditProfile()));
                   },
                 ),
                 ProfileTile(

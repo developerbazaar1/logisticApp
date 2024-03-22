@@ -16,7 +16,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
     const HomeScreen(),
-    const AddUserScreen(),
+    AddUserScreen(),
     const ViewUserScreen(),
     const ProfileScreen(),
   ];
