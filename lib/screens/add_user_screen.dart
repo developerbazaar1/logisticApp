@@ -1,6 +1,9 @@
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logistic/res/comman/app_text.dart';
-import 'package:logistic/screens/bottom_navigation_screen.dart';
+import 'package:logistic/screens/home_screen.dart';
+import 'package:logistic/screens/view_user_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/MyTextField.dart';
 
@@ -14,6 +17,7 @@ class AddUserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
+
     return Scaffold(
         body: CustomScrollView(slivers: [
       SliverAppBar(
@@ -27,56 +31,66 @@ class AddUserScreen extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: height * 0.04,
+              height: height * 0.02,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const BottomNavigationScreen(),
-                          ));
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const HomeScreen(),
+                        ),
+                      );
                     },
-                    child: const Icon(Icons.arrow_back_outlined)),
+                    icon: const Icon(Icons.arrow_back)),
                 SizedBox(
-                  width: width * 0.08,
+                  width: width * 0.15,
                 ),
-                Column(
-                  children: [
-                    Text(
-                      'Add New User',
-                      style: TextStyle(
-                          fontSize: width * 0.06,
-                          fontWeight: FontWeight.bold,
-                          color: LogisticColors.black),
-                    ),
-                    SizedBox(height: height * 0.01),
-                    Text(
-                      'Enter Details to Create a New User',
-                      style: TextStyle(
-                          fontSize: 16.sp, color: LogisticColors.black),
-                    ),
-                  ],
+                const Text(
+                  'Add New User',
+                  style: TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
+                    color: LogisticColors.black,
+                  ),
                 ),
                 const SizedBox.shrink()
               ],
             ),
-            SizedBox(height: height * 0.01),
+            SizedBox(
+              height: height * 0.005,
+            ),
+            const Text(
+              'Enter Details to Create a New User',
+              style: TextStyle(
+                fontSize: 13,
+                color: LogisticColors.black,
+              ),
+            ),
+            SizedBox(
+              height: height * 0.03,
+            ),
             Container(
               width: double.maxFinite,
-              margin: EdgeInsets.symmetric(horizontal: 20.w),
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+              margin: EdgeInsets.symmetric(horizontal: width * 0.04),
+              padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.04, vertical: height * 0.04),
               decoration: BoxDecoration(
-                color: LogisticColors.primary,
-                borderRadius: BorderRadius.circular(25),
+                color: LogisticColors.yellow,
+                borderRadius: BorderRadius.circular(23),
                 image: const DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('lib/assets/images/background.png')),
+                  image: AssetImage('lib/assets/images/background.png'),
+                  fit: BoxFit.cover,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      offset: const Offset(0, 0),
+                      blurRadius: 25)
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,107 +121,158 @@ class AddUserScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Row(
-                  //   children: [
-                  //     Column(
-                  //       children: [
-                  //         Container(
-                  //           width: 10,
-                  //           height: 10,
-                  //           color: Colors.black,
-                  //         ),
-                  //         const DottedLine(
-                  //           direction: Axis.vertical,
-                  //           lineLength: 60,
-                  //           dashLength: 6.0,
-                  //           dashRadius: 0.8,
-                  //           dashGapLength: 3.0,
-                  //           dashGapRadius: 0.6,
-                  //         ),
-                  // const Icon(
-                  //   Icons.arrow_drop_down_rounded,
-                  // ),
-                  //     const CircleAvatar(
-                  //       radius: 9,
-                  //       backgroundColor: Colors.black,
-                  //     )
-                  //   ],
-                  // ),
-                  SizedBox(
-                    height: 4.h,
-                  ),
-
-                  MyTextFeild(
-                      controller: c,
-                      headingText: 'Username',
-                      hintText: 'kulpatel_256'),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  MyTextFeild(
-                      controller: c,
-                      headingText: 'Name',
-                      hintText: 'Kuldeep Patel'),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Email Address',
-                    hintText: 'dummy@login.com',
-                  ),
-
-                  SizedBox(
-                    height: 16.h,
-                  ),
-
-                  MyTextFeild(
-                      controller: c,
-                      headingText: 'Phone Number',
-                      hintText: '+91 9876543210'),
-
-                  SizedBox(
-                    height: 16.h,
-                  ),
-
-                  SizedBox(
-                    height: 16.h,
-                  ),
-
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Department',
-                    hintText: 'Operations',
-                    img: 'lib/assets/images/Vector.png',
-                  ),
-
-                  SizedBox(
-                    height: 16.h,
-                  ),
-
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Responsibility',
-                    hintText: 'Manager',
-                    img: 'lib/assets/images/Vector.png',
-                  ),
-
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Password',
-                    hintText: '✱✱✱✱✱✱✱✱',
-                    img: 'lib/assets/images/Vector1.png',
+                  SizedBox(height: height * 0.016),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(height: height * 0.016),
+                          Container(
+                            width: width * 0.033,
+                            height: height * 0.016,
+                            color: Colors.black,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          const Icon(
+                            CupertinoIcons.arrow_down,
+                            size: 20,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          const Icon(
+                            CupertinoIcons.arrow_down,
+                            size: 20,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          const Icon(
+                            CupertinoIcons.arrow_down,
+                            size: 20,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          const Icon(
+                            CupertinoIcons.arrow_down,
+                            size: 20,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          // const Icon(
+                          //   CupertinoIcons.arrow_down,
+                          //   size: 20,
+                          // ),
+                          // const DottedLine(
+                          //   direction: Axis.vertical,
+                          //   lineLength: 70,
+                          //   dashLength: 4.0,
+                          //   dashRadius: 1.0,
+                          //   dashGapLength: 4.0,
+                          //   dashGapRadius: 0.6,
+                          // ),
+                          const CircleAvatar(
+                            radius: 6,
+                            backgroundColor: Colors.black,
+                          )
+                        ],
+                      ),
+                      SizedBox(width: width * 0.03),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            MyTextFeild(
+                                controller: c,
+                                headingText: 'Username',
+                                hintText: 'kulpatel_256'),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                                controller: c,
+                                headingText: 'Name',
+                                hintText: 'Kuldeep Patel'),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                              controller: c,
+                              headingText: 'Email Address',
+                              hintText: 'dummy@login.com',
+                            ),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                                controller: c,
+                                headingText: 'Phone Number',
+                                hintText: '+91 9876543210'),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            // MyTextFeild(
+                            //   controller: c,
+                            //   headingText: 'Department',
+                            //   hintText: 'Operations',
+                            //   img: 'lib/assets/images/Vector.png',
+                            // ),
+                            // SizedBox(
+                            //   height: height * 0.023,
+                            // ),
+                            MyTextFeild(
+                              controller: c,
+                              headingText: 'Responsibility',
+                              hintText: 'Manager',
+                              img: 'lib/assets/images/Vector.png',
+                            ),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                              controller: c,
+                              headingText: 'Password',
+                              hintText: '✱✱✱✱✱✱✱✱',
+                              img: 'lib/assets/images/Vector1.png',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
-                // ),//row
-                // ],// children
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: height * 0.04),
             Align(
               alignment: Alignment.center,
               child: GestureDetector(
@@ -222,7 +287,7 @@ class AddUserScreen extends StatelessWidget {
                 child: Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                    margin: EdgeInsets.symmetric(horizontal: width * 0.10),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.19),
                     decoration: const BoxDecoration(
                       color: LogisticColors.buttonBlack,
                       borderRadius: BorderRadius.all(
@@ -241,8 +306,7 @@ class AddUserScreen extends StatelessWidget {
                               title: Column(
                                 children: [
                                   Image.asset('lib/assets/gif/gif4.gif',
-                                      width: 150, height: 150),
-                                  SizedBox(height: height * 0.00),
+                                      width: 200, height: 200),
                                   Text(
                                     "New User Added Successfully!",
                                     style: GoogleFonts.roboto(
@@ -250,27 +314,49 @@ class AddUserScreen extends StatelessWidget {
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            18, // Adjust font size as needed
+                                            16, // Adjust font size as needed
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-                              content: const Text(
-                                "Congratulations! You have successfully added a new user to the system. ",
-                                style: TextStyle(color: Colors.black),
+                              content: Text(
+                                "Congratulations! You have successfully added a new user to the system.",
+                                style: GoogleFonts.roboto(
+                                  textStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 13, // Adjust font size as needed
+                                  ),
+                                ),
                               ),
                               actions: <Widget>[
                                 // Close button
-                                TextButton(
-                                  child: const Text(
-                                    "View Users",
-                                    style:
-                                        TextStyle(color: LogisticColors.black),
+                                Center(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.black, // Background color
+                                      borderRadius: BorderRadius.circular(
+                                          25), // Rounded corners
+                                    ),
+                                    child: TextButton(
+                                      child: Text(
+                                        "View Users",
+                                        style: TextStyle(
+                                          color: LogisticColors.white,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: width * 0.045,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const ViewUserScreen()),
+                                        );
+                                      },
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
                                 ),
                               ],
                             );
@@ -285,6 +371,9 @@ class AddUserScreen extends StatelessWidget {
                       ),
                     )),
               ),
+            ),
+            SizedBox(
+              height: height * 0.05,
             ),
           ],
         ),

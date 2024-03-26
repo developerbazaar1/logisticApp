@@ -33,7 +33,7 @@ class MyTextFeild extends StatelessWidget {
     OutlineInputBorder lineBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(width * 0.036),
       borderSide: BorderSide(
-        width: width * 0.003,
+        width: width * 0.004,
         color: Colors.white,
       ),
     );
@@ -43,9 +43,9 @@ class MyTextFeild extends StatelessWidget {
         SizedBox(height: height * 0.01),
         MyTextPoppines(
           text: headingText,
-          fontSize: width * 0.040,
+          fontSize: width * 0.036,
           color: Colors.white,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w300,
         ),
         SizedBox(height: height * 0.009),
         SizedBox(
@@ -65,7 +65,7 @@ class MyTextFeild extends StatelessWidget {
                 fontSize: width * 0.036,
                 fontWeight: FontWeight.w300,
               ),
-              fillColor: fillColor ?? Colors.white.withOpacity(0.65),
+              fillColor: fillColor ?? Colors.white.withOpacity(0.5),
               filled: true,
               border: lineBorder,
               focusedBorder: OutlineInputBorder(

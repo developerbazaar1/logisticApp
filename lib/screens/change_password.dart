@@ -1,5 +1,6 @@
-import 'package:logistic/res/comman/app_text.dart';
-import 'package:logistic/screens/profile_screen.dart';
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:logistic/screens/home_screen.dart';
 import 'package:logistic/utils/barrel.dart';
 import 'package:logistic/widgets/MyTextField.dart';
 import 'package:logistic/widgets/header_card.dart';
@@ -14,12 +15,19 @@ class ChangePassword extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
-      body: SingleChildScrollView(
+        body: CustomScrollView(slivers: [
+      SliverAppBar(
+        flexibleSpace: const HeaderCard(),
+        expandedHeight: height * 0.04,
+        floating: false,
+        pinned: true,
+        automaticallyImplyLeading: false,
+      ),
+      SliverToBoxAdapter(
         child: Column(
           children: [
-            const HeaderCard(),
             SizedBox(
-              height: 24.h,
+              height: height * 0.02,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -27,108 +35,171 @@ class ChangePassword extends StatelessWidget {
                 IconButton(
                     onPressed: () {
                       Navigator.pop(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) => const ProfileScreen()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const HomeScreen(),
+                        ),
+                      );
                     },
                     icon: const Icon(Icons.arrow_back)),
-                Text(
+                SizedBox(
+                  width: width * 0.15,
+                ),
+                const Text(
                   'Change Password',
                   style: TextStyle(
-                    fontSize: 24.sp,
+                    fontSize: 23,
                     fontWeight: FontWeight.bold,
                     color: LogisticColors.black,
                   ),
                 ),
+                const SizedBox.shrink()
               ],
             ),
             SizedBox(
-              height: 10.h,
+              height: height * 0.005,
             ),
-            Text(
-              'Update Your Account Security',
+            const Text(
+              'Update Your Account Information',
               style: TextStyle(
-                fontSize: 13.sp,
+                fontSize: 13,
                 color: LogisticColors.black,
               ),
             ),
             SizedBox(
-              height: 20.h,
+              height: height * 0.03,
             ),
             Container(
               width: double.maxFinite,
-              margin: EdgeInsets.symmetric(horizontal: 20.w),
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+              margin: EdgeInsets.symmetric(horizontal: width * 0.04),
+              padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.04, vertical: height * 0.04),
               decoration: BoxDecoration(
                 color: LogisticColors.yellow,
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(23),
                 image: const DecorationImage(
-                    image: AssetImage('lib/assets/images/background.png')),
+                  image: AssetImage('lib/assets/images/background.png'),
+                  fit: BoxFit.cover,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.4),
+                      offset: const Offset(0, 0),
+                      blurRadius: 25)
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Enter Old Password',
-                    hintText: '✱✱✱✱✱✱✱✱',
-                    img: 'lib/assets/images/Vector1.png',
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Enter New Password',
-                    hintText: '✱✱✱✱✱✱✱✱',
-                    img: 'lib/assets/images/Vector1.png',
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  MyTextFeild(
-                    controller: c,
-                    headingText: 'Re-enter New Password',
-                    hintText: '✱✱✱✱✱✱✱✱',
-                    img: 'lib/assets/images/Vector1.png',
-                  ),
-                  SizedBox(
-                    height: 20.h,
+                  SizedBox(height: height * 0.0040),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(height: height * 0.036),
+                          Container(
+                            width: width * 0.033,
+                            height: height * 0.016,
+                            color: Colors.black,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          const Icon(
+                            CupertinoIcons.arrow_down,
+                            size: 20,
+                          ),
+                          const DottedLine(
+                            direction: Axis.vertical,
+                            lineLength: 70,
+                            dashLength: 4.0,
+                            dashRadius: 1.0,
+                            dashGapLength: 4.0,
+                            dashGapRadius: 0.6,
+                          ),
+                          const CircleAvatar(
+                            radius: 6,
+                            backgroundColor: Colors.black,
+                          )
+                        ],
+                      ),
+                      SizedBox(width: width * 0.03),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                              controller: c,
+                              headingText: 'Enter Old Password',
+                              hintText: '✱✱✱✱✱✱✱✱',
+                              img: 'lib/assets/images/Vector1.png',
+                            ),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                              controller: c,
+                              headingText: 'Enter New Password',
+                              hintText: '✱✱✱✱✱✱✱✱',
+                              img: 'lib/assets/images/Vector1.png',
+                            ),
+                            SizedBox(
+                              height: height * 0.023,
+                            ),
+                            MyTextFeild(
+                              controller: c,
+                              headingText: 'Re-enter New Password',
+                              hintText: '✱✱✱✱✱✱✱✱',
+                              img: 'lib/assets/images/Vector1.png',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
             SizedBox(height: height * 0.04),
-            GestureDetector(
-              onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const SignInScreen(),
-                //   ),
-                // );
-              },
-              child: Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: height * 0.016),
-                  margin: EdgeInsets.symmetric(horizontal: width * 0.09),
-                  decoration: const BoxDecoration(
-                    color: LogisticColors.buttonBlack,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(32),
-                    ),
-                  ),
-                  child: MyTextPoppines(
-                    text: "Save",
-                    color: LogisticColors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: width * 0.045,
-                  )),
+            Align(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (builder) =>
+                  //             const BottomNavigationScreen()));
+                },
+                child: Container(
+                    width: 200.w,
+                    height: 52.h,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: LogisticColors.black,
+                        borderRadius: BorderRadius.circular(32)),
+                    child: Text('Save',
+                        style: TextStyle(
+                          color: LogisticColors.white,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                        ))),
+              ),
             ),
-            SizedBox(height: height * 0.05)
+            SizedBox(
+              height: height * 0.05,
+            ),
           ],
         ),
       ),
-    );
+    ]));
   }
 }

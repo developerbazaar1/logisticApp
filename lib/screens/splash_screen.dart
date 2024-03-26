@@ -55,14 +55,14 @@ class SplashScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignInScreen(),
+                          builder: (context) => const SignInScreen(),
                         ),
                       );
                     },
                     child: Container(
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                        margin: EdgeInsets.symmetric(horizontal: width * 0.04),
+                        margin: EdgeInsets.symmetric(horizontal: width * 0.06),
                         decoration: const BoxDecoration(
                           color: LogisticColors.buttonBlack,
                           borderRadius: BorderRadius.all(
